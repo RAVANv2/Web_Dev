@@ -1,5 +1,6 @@
 package atmMachine;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class userInterface
@@ -60,4 +61,33 @@ public class userInterface
         }while (item!=4);
         System.out.println("Have A Nice Day :) ");
     }
+
+    public class Auth
+    {
+        private HashMap<Integer, Integer> map = new HashMap<>();
+        public Auth()
+        {
+            map.put(1234, 1234);
+        }
+
+        public Boolean validation()
+        {
+            boolean result=true;
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter your ID: ");
+            int id = sc.nextInt();
+            System.out.print("Enter your password: ");
+            int pass = sc.nextInt();
+
+            if(map.containsKey(id) && map.containsValue(pass))
+            {System.out.println(" \n \nHii their, Welcome to LALA Bank \n \n"); result=false;}
+            else
+                System.out.println("Please Enter correct information");
+
+            return result;
+        }
+    }
+
 }
+
+

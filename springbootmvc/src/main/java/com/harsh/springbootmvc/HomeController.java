@@ -1,10 +1,9 @@
 package com.harsh.springbootmvc;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/")
+    @RequestMapping("/  ")
     public String homePage()
     {
         System.out.println("Home Page is Running");
@@ -20,7 +19,7 @@ public class HomeController {
     }
 
 //    This Function takes the request comming from frontend and returns the result in jsp form
-    @RequestMapping("add")
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public ModelAndView add(@RequestParam("num1") int num1, @RequestParam("num2") int num2){
 //        Model and View class is responsible for returning your jsp file with some data
         ModelAndView mv = new ModelAndView();
@@ -44,14 +43,15 @@ public class HomeController {
      */
 
     // Complex way to write function and Efficient as well
-    @RequestMapping("addAlien")
+    @PostMapping(value="addAlien")
     public String addAlien(@ModelAttribute("alien") Alien a){
         return "alien";
     }
 
     // Simple way but not satisfying coding standard
+
     /*
-    @RequestMapping("addAlien")
+    @RequestMapping(value="addAlien",method = RequestMethod.POST)
     public String addAlien(@RequestParam("id") int id, @RequestParam("name") String name, HttpSession session){
         Alien a = new Alien();
         a.setId(id);
@@ -60,6 +60,6 @@ public class HomeController {
         session.setAttribute("alien",a);
         return "alien";
     }
-
      */
+
 }

@@ -5,17 +5,19 @@
 <ul>
     <li> Open src/chatting/application directory </li>
     <li> First run Server.java file</li>
-        $ javac Server.java<br>
-        $ java Server<br>
 </ul>
+
+`$ javac Server.java` <br>
+`$ java Server`
 
 ![](photos/1.png)
 
 <ul>
     <li> Now Run Client.java file</li>
-    $ javac Client.java<br>
-    $ java Client
 </ul>
+
+`$ javac Client.java` <br>
+`$ java Client`
 
 ![](photos/2.png)
 

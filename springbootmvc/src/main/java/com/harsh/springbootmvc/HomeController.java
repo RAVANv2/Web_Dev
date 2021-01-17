@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/  ")
+    @RequestMapping("/")
     public String homePage()
     {
         System.out.println("Home Page is Running");

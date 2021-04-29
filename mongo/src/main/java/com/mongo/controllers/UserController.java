@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/user")
@@ -34,19 +35,18 @@ public class UserController {
         return user1;
     }
 
+//    FindbyId and some custom operation is used
     @RequestMapping(value = "/city", method = RequestMethod.POST)
-    public User changeCity(@RequestParam("id") Integer id ,@RequestParam("cityName") String name){
-        List<User> userData = (List<User>) user.findAll();
-        User updateUser = new User();
-        for(User obj : userData){
-            if(obj.getId() == id){
-                obj.setCity(name);
-                user.save(obj);
-                updateUser = obj;
-                break;
-            }
-        }
-        return updateUser;
+    public User changeCity(@RequestParam("id") Integer id, @RequestParam("designation") String designation
+                                ,@RequestParam("cityName") String name){
+        Optional<User> dataOptional = user.findById(id);
+        User data = dataOptional.get();
+        data.setCity(name);
+        System.out.println(data);
+        user.save(data);
+        List<User> des = user.findByDesignation(designation);
+        System.out.println(des);
+        return data;
 //        userData.forEach(userObj -> {
 //            if(userObj.getId() == id){
 //                userObj.setCity(name);

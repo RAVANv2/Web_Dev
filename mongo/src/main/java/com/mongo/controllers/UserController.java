@@ -3,6 +3,8 @@ package com.mongo.controllers;
 import com.mongo.models.User;
 import com.mongo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,11 +23,16 @@ public class UserController {
         return (List<User>) user.findAll();
     }
 
-    @RequestMapping(value = "/post", method = RequestMethod.POST)
-    public User addUser(@RequestBody User user1){
+    @PostMapping(value = "/post")
+    public ResponseEntity<User> addUser(@RequestBody User user1){
         System.out.println("New Entry in DB");
-        user.save(user1);
-        return user1;
+        try{
+            user.save(user1);
+            return ResponseEntity.of(Optional.of(user1));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)

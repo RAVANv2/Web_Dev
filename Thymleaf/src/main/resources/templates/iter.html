@@ -1,0 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>For Loop</title>
+</head>
+<body>
+    <h1> Testing </h1>
+    <h1 th:text="${name}"></h1>
+
+    <h1 th:each="n, status : ${name}" >
+        <span th:style="${status.odd} ? 'color:red' : 'color:green'" th:text="${n} + ' ' + ${status.count}" >
+
+        </span>
+<!--
+        status can be:
+        1) status.index -> The current iteration index
+        2) status.count -> The Number of elements processed so far
+        3) status.size -> Total Number of elements in the list
+        4) status.even/odd -> Check if the current iteration is even or odd
+        5) status.first/last -> Check if the iteration is first or last
+-->
+    </h1>
+</body>
+</html>

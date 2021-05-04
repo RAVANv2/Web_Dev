@@ -1,0 +1,22 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Thymleaf </title>
+</head>
+<body>
+    <h1 th:text="${ #strings.toUpperCase(name) }"></h1>
+    <!-- ${var} used to specify the variable and
+    ${ #strings. }} used to use inbuild operation like array length} -->
+    <h2 th:text="${date}" ></h2>
+    <h3>Age of owner is <span th:text="${age}" ></span></h3>
+
+    <div th:with="a=5, b=67, c=${name}">
+        <h1>The Value of a is <span th:text="${a}"></span></h1>
+    <!--  OR  -->
+        <h1 th:text=" 'The value of a is ' + ${a} "></h1>
+        <h1 th:text=" 'Sum of '+${a}+' and '+${b}+' is ' + ${a+b} "></h1>
+    </div>
+
+</body>
+</html>

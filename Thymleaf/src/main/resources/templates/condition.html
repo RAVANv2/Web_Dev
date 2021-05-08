@@ -1,0 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Condition</title>
+</head>
+<body>
+<h1 th:style="${attendence} ? 'color:green' : 'color:red'">
+    User is <span th:text="${attendence} ? 'Active' : 'InActive'" ></span>
+</h1>
+
+<!--If Else Condition-->
+<h1 th:if="${gender} == 'M'" > Male </h1>
+<h1 th:unless="${gender} == 'M'" > Female </h1>
+
+<!--Switch Case-->
+<h1 th:switch="${#lists.size(myList)}">
+    <span th:case="'0'"> List Contain zero elements </span>
+    <span th:case="'1'"> List Contain One elements </span>
+    <span th:case="'2'"> List Contain Two elements </span>
+    <span th:case="*"> List Contain more than two elements</span>
+</h1>
+
+</body>
+</html>

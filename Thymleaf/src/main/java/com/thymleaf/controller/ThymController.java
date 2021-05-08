@@ -28,5 +28,14 @@ public class ThymController {
         m.addAttribute("name", names);
         return "iter";
     }
+    // handler for conditional statement
+    @GetMapping("/condition")
+    public String conditionHandler(Model m){
+        m.addAttribute("attendence", true);
+        m.addAttribute("gender", "M");
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,2,3,4));
+        m.addAttribute("myList", list);
+        return "condition";
+    }
 
 }

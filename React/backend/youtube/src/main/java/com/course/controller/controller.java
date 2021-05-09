@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 public class controller {
     @Autowired
@@ -30,6 +31,7 @@ public class controller {
     @PostMapping("/add-course")
     public ResponseEntity<YoutubeCourse> addCourse(@RequestBody YoutubeCourse course){
         try{
+            System.out.println(course);
             youtube.save(course);
             return ResponseEntity.of(Optional.of(course));
         }
@@ -37,8 +39,18 @@ public class controller {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-
     }
+
+    @DeleteMapping("/delete-course/{id}")
+    public void removeCourse(@PathVariable("id") Integer id){
+    try{
+        youtube.deleteById(id);
+        return;
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    }
+
 
     @PutMapping("/update/{id}")
     public ResponseEntity<YoutubeCourse> updateCourse(@PathVariable("id") Integer id,
@@ -57,6 +69,4 @@ public class controller {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-    
 }

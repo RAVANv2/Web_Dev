@@ -1,6 +1,5 @@
 import React from 'react'
 import Form from './component/form'
-import Home from './component/home'
 import './App.css';
 
 class App extends React.Component{
